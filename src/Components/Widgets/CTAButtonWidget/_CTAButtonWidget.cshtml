@@ -1,0 +1,18 @@
+﻿@using DotStark.XBK.CTAButtonWidget
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+@model CTAButtonWidgetViewModel
+
+@if (Model == null || string.IsNullOrEmpty(Model.Text))
+{
+    @if (Context.Kentico().PageBuilder().EditMode)
+    {
+        <p class="text-center">please configure widget properties.</p>
+    }
+}
+else if (Model.IsVisible)
+{
+    <div class="@Model.CssClass @Model.Alignment">
+        <a href="@Model.LinkUrl" class="btn active" role="button" aria-pressed="false" @Model.ButtonTarget>@Model.Text</a>
+    </div>
+}
